@@ -2851,14 +2851,14 @@
 			device_type = "power_sply";
 			dcdc1_vol = <0xf4f24>;
 			dcdc2_vol = <0xf468c>;
+			dcdc5_vol = <0xF4786>;
 			dcdc6_vol = <0xf468c>;
 			aldo1_vol = <0xaf0>;
 			aldo2_vol = <0xf4948>;
 			aldo3_vol = <0xf4df8>;
 			dldo1_vol = <0xce4>;
-			 dldo2_vol = <0x000f4c04>;
+			dldo2_vol = <0x000f4c04>;
                         dldo3_vol = <0x000F46F0>;
-
 			dldo4_vol = <0xf4f24>;
 			eldo1_vol = <0xf4948>;
 			eldo2_vol = <0x708>;
