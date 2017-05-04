@@ -1521,7 +1521,7 @@
 			codec@0 {
 				linux,phandle = <0xb4>;
 				phandle = <0xb4>;
-				allwinner,pins = "PH7";
+				allwinner,pins = "PL12";
 				allwinner,function = "codec";
 				allwinner,pname = "gpio-spk";
 				allwinner,muxsel = <0x2>;
@@ -2528,7 +2528,7 @@
 			pmu_usbpc_cur = <0x1f4>;
 			pmu_battery_warning_level1 = <0xf>;
 			pmu_battery_warning_level2 = <0x0>;
-			pmu_chgled_func = <0x0>;
+			pmu_chgled_func = <0x01>;
 			pmu_chgled_type = <0x0>;
 			pmu_bat_para1 = <0x0>;
 			pmu_bat_para2 = <0x0>;
@@ -3450,6 +3450,6 @@
 		device_type = "hall";
 		hall_power = "hall-vcc-18";
 		hall_power_vol = <0x708>;
-		hall_gpio = <0x30 0x1 0x0 0x6 0xffffffff 0xffffffff 0x0>;
+		hall_gpio = <0x79 0xb 0x8 0x6 0xffffffff 0xffffffff 0x0>;
 	};
 };
