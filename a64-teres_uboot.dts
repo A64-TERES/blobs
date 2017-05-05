@@ -1053,7 +1053,7 @@
 			};
 
 			sdc2@1 {
-				allwinner,pins = "PC1", "PC5", "PC6", "PC8", "PC9", "PC10", "PC11", "PC12", "PC13", "PC14", "PC15", "PC16";
+				allwinner,pins = "PC5", "PC6", "PC8", "PC9", "PC10", "PC11", "PC12", "PC13", "PC14", "PC15", "PC16";
 				allwinner,function = "io_disabled";
 				allwinner,muxsel = <0x7>;
 				allwinner,drive = <0x1>;
@@ -1209,9 +1209,9 @@
 			card2_boot_para@0 {
 				linux,phandle = <0x9a>;
 				phandle = <0x9a>;
-				allwinner,pins = "PC1", "PC5", "PC6", "PC8", "PC9", "PC10", "PC11", "PC12", "PC13", "PC14", "PC15", "PC16";
+				allwinner,pins = "PC5", "PC6", "PC8", "PC9", "PC10", "PC11", "PC12", "PC13", "PC14", "PC15", "PC16";
 				allwinner,function = "card2_boot_para";
-				allwinner,pname = "sdc_ds", "sdc_clk", "sdc_cmd", "sdc_d0", "sdc_d1", "sdc_d2", "sdc_d3", "sdc_d4", "sdc_d5", "sdc_d6", "sdc_d7", "sdc_emmc_rst";
+				allwinner,pname = "sdc_clk", "sdc_cmd", "sdc_d0", "sdc_d1", "sdc_d2", "sdc_d3", "sdc_d4", "sdc_d5", "sdc_d6", "sdc_d7", "sdc_emmc_rst";
 				allwinner,muxsel = <0x3>;
 				allwinner,pull = <0x1>;
 				allwinner,drive = <0x3>;
@@ -1509,9 +1509,9 @@
 			sdc2@0 {
 				linux,phandle = <0xb3>;
 				phandle = <0xb3>;
-				allwinner,pins = "PC1", "PC5", "PC6", "PC8", "PC9", "PC10", "PC11", "PC12", "PC13", "PC14", "PC15", "PC16";
+				allwinner,pins = "PC5", "PC6", "PC8", "PC9", "PC10", "PC11", "PC12", "PC13", "PC14", "PC15", "PC16";
 				allwinner,function = "sdc2";
-				allwinner,pname = "sdc2_ds", "sdc2_clk", "sdc2_cmd", "sdc2_d0", "sdc2_d1", "sdc2_d2", "sdc2_d3", "sdc2_d4", "sdc2_d5", "sdc2_d6", "sdc2_d7", "sdc2_emmc_rst";
+				allwinner,pname = "sdc2_clk", "sdc2_cmd", "sdc2_d0", "sdc2_d1", "sdc2_d2", "sdc2_d3", "sdc2_d4", "sdc2_d5", "sdc2_d6", "sdc2_d7", "sdc2_emmc_rst";
 				allwinner,muxsel = <0x3>;
 				allwinner,pull = <0x1>;
 				allwinner,drive = <0x3>;
@@ -1521,10 +1521,10 @@
 			codec@0 {
 				linux,phandle = <0xb4>;
 				phandle = <0xb4>;
-				allwinner,pins = "PH7";
+				allwinner,pins = "PL12";
 				allwinner,function = "codec";
 				allwinner,pname = "gpio-spk";
-				allwinner,muxsel = <0x2>;
+				allwinner,muxsel = <0x1>;
 				allwinner,pull = <0x1>;
 				allwinner,drive = <0xffffffff>;
 				allwinner,data = <0xffffffff>;
@@ -2070,16 +2070,16 @@
 			clocks = <0x6 0x5a 0x5b 0x5c 0x5d>;
 			clock-names = "osc24m", "pll_periph", "mmc", "ahb", "rst";
 			pinctrl-names = "default", "sleep";
-			pinctrl-1 = <0x5f>;
+		/*	pinctrl-1 = <0x5f>;*/
 			bus-width = <0x8>;			
             		max-frequency = <50000000>;
 			status = "okay";
 			pinctrl-0 = <0xb3>;
 			non-removable;
        		        cd-gpios;
-            		mmc-ddr-1_8v;
+           /* 		mmc-ddr-1_8v;
             		mmc-hs200-1_8v;
-            		sunxi-dly-52M;
+            		sunxi-dly-52M;*/
 			vmmc = "vcc-emmc";
 			vqmmc = "vcc-lpddr";
 			vdmmc = "none";
@@ -2881,8 +2881,9 @@
 			card_ctrl = <0x2>;
 			card_high_speed = <0x1>;
 			card_line = <0x8>;
-			pinctrl-0 = <0x9a>;
-			sdc_ex_dly_used = <0x2>;
+			pinctrl-0 = <0xb3>;
+
+/*			sdc_ex_dly_used = <0x2>;
 			tm4_smx_fx_0 = <0x00000000>;
 			tm4_smx_fx_1 = <0x00000000>;
 			tm4_smx_fx_2 = <0x002fffff>;
@@ -2892,7 +2893,7 @@
 			tm4_smx_fx_6 = <0x0d2fffff>;
 			tm4_smx_fx_7 = <0x00000b2d>;
 			tm4_smx_fx_8 = <0x00000000>;
-			tm4_smx_fx_9 = <0x00000000>;
+			tm4_smx_fx_9 = <0x00000000>;*/
 		};
 
 		twi_para {
@@ -3115,6 +3116,12 @@
 			device_type = "fastboot_key";
 			key_max = <0x4>;
 			key_min = <0x4>;
+		};
+
+		headphone_debug {
+			debug_en_gpio = <0x79 0xb 0x9 0x1 0xffffffff 0xffffffff 0x1>;	
+			enabled = <0x0>;
+
 		};
 	};
 
