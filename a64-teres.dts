@@ -1509,9 +1509,9 @@
 			sdc2@0 {
 				linux,phandle = <0xb3>;
 				phandle = <0xb3>;
-				allwinner,pins = "PC1", "PC5", "PC6", "PC8", "PC9", "PC10", "PC11", "PC12", "PC13", "PC14", "PC15", "PC16";
+				allwinner,pins = "PC5", "PC6", "PC8", "PC9", "PC10", "PC11", "PC12", "PC13", "PC14", "PC15", "PC16";
 				allwinner,function = "sdc2";
-				allwinner,pname = "sdc2_ds", "sdc2_clk", "sdc2_cmd", "sdc2_d0", "sdc2_d1", "sdc2_d2", "sdc2_d3", "sdc2_d4", "sdc2_d5", "sdc2_d6", "sdc2_d7", "sdc2_emmc_rst";
+				allwinner,pname = "sdc2_clk", "sdc2_cmd", "sdc2_d0", "sdc2_d1", "sdc2_d2", "sdc2_d3", "sdc2_d4", "sdc2_d5", "sdc2_d6", "sdc2_d7", "sdc2_emmc_rst";
 				allwinner,muxsel = <0x3>;
 				allwinner,pull = <0x1>;
 				allwinner,drive = <0x3>;
@@ -1521,10 +1521,10 @@
 			codec@0 {
 				linux,phandle = <0xb4>;
 				phandle = <0xb4>;
-				allwinner,pins = "PH7";
+				allwinner,pins = "PL11";
 				allwinner,function = "codec";
 				allwinner,pname = "gpio-spk";
-				allwinner,muxsel = <0x2>;
+				allwinner,muxsel = <0x1>;
 				allwinner,pull = <0x1>;
 				allwinner,drive = <0xffffffff>;
 				allwinner,data = <0xffffffff>;
@@ -1847,7 +1847,7 @@
 			status = "okay";
 			usb_port_type = <0x1>;
 			usb_detect_type = <0x0>;
-			usb_drv_vbus_gpio;
+			usb_drv_vbus_gpio = <0x79 0xb 0x7 0x1 0x0 0xffffffff 0x0>;
 			usb_hsic_rdy_gpio;
 			usb_hsic_hub_connect_gpio;
 			usb_hsic_int_n_gpio;
@@ -1880,7 +1880,7 @@
 			pinctrl-1 = <0x3e>;
 			pinctrl-2 = <0x3f>;
 			pinctrl-3 = <0x40>;
-			gpio-spk = <0x30 0x7 0x7 0x1 0x1 0x1 0x1>;
+			gpio-spk = <0x79 0xb 0xb 0x1 0x1 0x1 0x1>;
 			headphonevol = <0x3b>;
 			spkervol = <0x1a>;
 			earpiecevol = <0x1e>;
@@ -2041,8 +2041,14 @@
 			pinctrl-1 = <0x55>;
 			spi0_cs_number = <0x1>;
 			spi0_cs_bitmap = <0x1>;
-			status = "disabled";
+			status = "okay";
 			pinctrl-0 = <0xa6 0xa7>;
+
+			spidev@0 {
+				compatible = "spidev";
+				reg = <0x0>;
+				spi-max-frequency = <0x2faf080>;
+			};
 		};
 
 		spi@01c69000 {
@@ -2138,8 +2144,6 @@
 			sd-uhs-ddr50;
 			sd-uhs-sdr104;
 			cap-sdio-irq;
-			keep-power-in-suspend;
-			ignore-pm-notify;
 		};
 
 		disp@01000000 {
@@ -2167,57 +2171,52 @@
 			compatible = "allwinner,sunxi-lcd0";
 			pinctrl-names = "active", "sleep";
 			status = "okay";
-                        device_type = "lcd0";
-                        lcd_used = <0x1>;
-                        lcd_driver_name = "anx9804_panel";
-                        lcd_model_name = <0x2>;
-                        lcd_backlight = <0xff>;
-                        lcd_if = <0x0>;
-                        lcd_x = <0x556>;
-                        lcd_y = <0x300>;
-                        lcd_width = <0x100>;
-                        lcd_height = <0x90>;
-                        lcd_dclk_freq = <0x4c>;
-                        lcd_pwm_used = <0x1>;
-                        lcd_pwm_ch = <0x0>;
-                        lcd_pwm_freq = <0xc8>;
-                        lcd_pwm_pol = <0x0>;
-                        lcd_pwm_max_limit = <0xfa>;
-                        lcd_hbp = <0xa1>;
-                        lcd_ht = <0x638>;
-                        lcd_hspw = <0x10>;
-                        lcd_vbp = <0x10>;
-                        lcd_vt = <0x320>;
-                        lcd_vspw = <0x4>;
-                        lcd_lvds_if = <0x0>;
-                        lcd_lvds_colordepth = <0x0>;
-                        lcd_lvds_mode = <0x0>;
-                        lcd_frm = <0x1>;
-                        lcd_hv_clk_phase = <0x0>;
-                        lcd_hv_sync_polarity = <0x0>;
-                        lcd_dsi_if = <0x0>;
-                        lcd_dsi_lane = <0x4>;
-                        lcd_dsi_format = <0x0>;
-                        lcd_dsi_te = <0x0>;
-                        lcd_gamma_en = <0x0>;
-                        lcd_bright_curve_en = <0x0>;
-                        lcd_cmap_en = <0x0>;
-                        lcd_edp_tx_rate = <0x2>;
-                        lcd_edp_tx_lane = <0x2>;
-                        lcd_edp_colordepth = <0x1>;
-                        lcdgamma4iep = <0x16>;
-                        lcd_bl_en = <0x30 0x3 0x17 0x1 0x0 0xffffffff 0x1>;
-                        lcd_bl_en_power = "none";
-                /*      lcd_power = "vcc-lvds";
-                        lcd_power1 = "vcc-mipi";
-                        lcd_power2 = "vcc-hsic-12";*/
-                        lcd_gpio_0 = <0x30 0x3 0x18 0x1 0x0 0xffffffff 0x0>;
-/*    lcd_gpio_2 = <0x30 0x0 0x8 0x0 0x1 0xffffffff 0x0>;
-      lcd_gpio_3 = <0x30 0x0 0x9 0x0 0x1 0xffffffff 0x0>;*/
-                        pinctrl-0 = <0xac>;
-                        lcd_pin_power = "vcc-pd";
-                        pinctrl-1 = <0xad>;
-                       };
+			device_type = "lcd0";
+			lcd_used = <0x1>;
+			lcd_driver_name = "anx9804_panel";
+			lcd_model_name = <0x2>;
+			lcd_backlight = <0xff>;
+			lcd_if = <0x0>;
+			lcd_x = <0x556>;
+			lcd_y = <0x300>;
+			lcd_width = <0x100>;
+			lcd_height = <0x90>;
+			lcd_dclk_freq = <0x4c>;
+			lcd_pwm_used = <0x1>;
+			lcd_pwm_ch = <0x0>;
+			lcd_pwm_freq = <0x12c>;
+			lcd_pwm_pol = <0x0>;
+			lcd_pwm_max_limit = <0xfa>;
+			lcd_hbp = <0xa1>;
+			lcd_ht = <0x638>;
+			lcd_hspw = <0x10>;
+			lcd_vbp = <0x10>;
+			lcd_vt = <0x320>;
+			lcd_vspw = <0x4>;
+			lcd_lvds_if = <0x0>;
+			lcd_lvds_colordepth = <0x0>;
+			lcd_lvds_mode = <0x0>;
+			lcd_frm = <0x1>;
+			lcd_hv_clk_phase = <0x0>;
+			lcd_hv_sync_polarity = <0x0>;
+			lcd_dsi_if = <0x0>;
+			lcd_dsi_lane = <0x4>;
+			lcd_dsi_format = <0x0>;
+			lcd_dsi_te = <0x0>;
+			lcd_gamma_en = <0x0>;
+			lcd_bright_curve_en = <0x0>;
+			lcd_cmap_en = <0x0>;
+			lcd_edp_tx_rate = <0x2>;
+			lcd_edp_tx_lane = <0x2>;
+			lcd_edp_colordepth = <0x1>;
+			lcdgamma4iep = <0x16>;
+			lcd_bl_en = <0x30 0x3 0x17 0x1 0x0 0xffffffff 0x1>;
+			lcd_bl_en_power = "none";
+			lcd_gpio_0 = <0x30 0x3 0x18 0x1 0x0 0xffffffff 0x0>;
+			pinctrl-0 = <0xac>;
+			lcd_pin_power = "vcc-pd";
+			pinctrl-1 = <0xad>;
+		};
 
 		hdmi@01ee0000 {
 			compatible = "allwinner,sunxi-hdmi";
@@ -2500,7 +2499,7 @@
 			pmu_pwron_vol = <0xa28>;
 			pmu_powkey_off_delay_time = <0x0>;
 			pmu_pwrok_time = <0x40>;
-			pmu_reset_shutdown_en = <0x1>;
+			pmu_reset_shutdown_en = <0x0>;
 			pmu_restvol_adjust_time = <0x3c>;
 			pmu_ocv_cou_adjust_time = <0x3c>;
 			pmu_vbusen_func = <0x1>;
@@ -2518,7 +2517,7 @@
 			pmu_chg_ic_temp = <0x0>;
 			pmu_battery_rdc = <0x58>;
 			pmu_battery_cap = <0x1b58>;
-			pmu_runtime_chgcur = <0x4b0>;
+			pmu_runtime_chgcur = <0x1c2>;
 			pmu_suspend_chgcur = <0x5dc>;
 			pmu_shutdown_chgcur = <0x5dc>;
 			pmu_init_chgvol = <0x1068>;
@@ -2528,7 +2527,7 @@
 			pmu_usbpc_cur = <0x1f4>;
 			pmu_battery_warning_level1 = <0xf>;
 			pmu_battery_warning_level2 = <0x0>;
-			pmu_chgled_func = <0x0>;
+			pmu_chgled_func = <0x1>;
 			pmu_chgled_type = <0x0>;
 			pmu_bat_para1 = <0x0>;
 			pmu_bat_para2 = <0x0>;
@@ -2562,7 +2561,7 @@
 			pmu_bat_para30 = <0x64>;
 			pmu_bat_para31 = <0x64>;
 			pmu_bat_para32 = <0x64>;
-			pmu_bat_temp_enable = <0x0>;
+			pmu_bat_temp_enable = <0x1>;
 			pmu_bat_charge_ltf = <0x8d5>;
 			pmu_bat_charge_htf = <0x184>;
 			pmu_bat_temp_para1 = <0x1d2a>;
@@ -2581,8 +2580,8 @@
 			pmu_bat_temp_para14 = <0xf2>;
 			pmu_bat_temp_para15 = <0xb3>;
 			pmu_bat_temp_para16 = <0x86>;
-			pmu_powkey_off_time = <0x1770>;
-			pmu_powkey_off_func = <0x0>;
+			pmu_powkey_off_time = <0x100>;
+			pmu_powkey_off_func = <0x1>;
 			pmu_powkey_off_en = <0x1>;
 			pmu_powkey_long_time = <0x5dc>;
 			pmu_powkey_on_time = <0x3e8>;
@@ -2638,7 +2637,7 @@
 			nand0_p1 = <0x55aaaa55>;
 			nand0_p2 = <0x55aaaa55>;
 			nand0_p3 = <0x55aaaa55>;
-			status = "okay";
+			status = "disabled";
 			nand0_support_2ch = <0x0>;
 			pinctrl-0 = <0xaa 0xab>;
 		};
@@ -2855,9 +2854,8 @@
 			aldo2_vol = <0xf4948>;
 			aldo3_vol = <0xf4df8>;
 			dldo1_vol = <0xce4>;
-			 dldo2_vol = <0x000f4c04>;
-                        dldo3_vol = <0x000F46F0>;
-
+			dldo2_vol = <0xf4c04>;
+			dldo3_vol = <0xf46f0>;
 			dldo4_vol = <0xf4f24>;
 			eldo1_vol = <0xf4948>;
 			eldo2_vol = <0x708>;
@@ -2894,16 +2892,16 @@
 			card_line = <0x8>;
 			pinctrl-0 = <0x9a>;
 			sdc_ex_dly_used = <0x2>;
-			tm4_smx_fx_0 = <0x00000000>;
-			tm4_smx_fx_1 = <0x00000000>;
-			tm4_smx_fx_2 = <0x002fffff>;
-			tm4_smx_fx_3 = <0x00000000>;
-			tm4_smx_fx_4 = <0x000dffff>;
-			tm4_smx_fx_5 = <0x00000000>;
-			tm4_smx_fx_6 = <0x0d2fffff>;
-			tm4_smx_fx_7 = <0x00000b2d>;
-			tm4_smx_fx_8 = <0x00000000>;
-			tm4_smx_fx_9 = <0x00000000>;
+			tm4_smx_fx_0 = <0x0>;
+			tm4_smx_fx_1 = <0x0>;
+			tm4_smx_fx_2 = <0x2fffff>;
+			tm4_smx_fx_3 = <0x0>;
+			tm4_smx_fx_4 = <0xdffff>;
+			tm4_smx_fx_5 = <0x0>;
+			tm4_smx_fx_6 = <0xd2fffff>;
+			tm4_smx_fx_7 = <0xb2d>;
+			tm4_smx_fx_8 = <0x0>;
+			tm4_smx_fx_9 = <0x0>;
 		};
 
 		twi_para {
@@ -3450,6 +3448,6 @@
 		device_type = "hall";
 		hall_power = "hall-vcc-18";
 		hall_power_vol = <0x708>;
-		hall_gpio = <0x30 0x1 0x0 0x6 0xffffffff 0xffffffff 0x0>;
+		hall_gpio = <0x79 0xb 0x8 0x6 0xffffffff 0xffffffff 0x0>;
 	};
 };
