@@ -1053,7 +1053,7 @@
 			};
 
 			sdc2@1 {
-				allwinner,pins = "PC1", "PC5", "PC6", "PC8", "PC9", "PC10", "PC11", "PC12", "PC13", "PC14", "PC15", "PC16";
+				allwinner,pins = "PC5", "PC6", "PC8", "PC9", "PC10", "PC11", "PC12", "PC13", "PC14", "PC15", "PC16";
 				allwinner,function = "io_disabled";
 				allwinner,muxsel = <0x7>;
 				allwinner,drive = <0x1>;
@@ -1209,7 +1209,7 @@
 			card2_boot_para@0 {
 				linux,phandle = <0x9a>;
 				phandle = <0x9a>;
-				allwinner,pins = "PC1", "PC5", "PC6", "PC8", "PC9", "PC10", "PC11", "PC12", "PC13", "PC14", "PC15", "PC16";
+				allwinner,pins = "PC5", "PC6", "PC8", "PC9", "PC10", "PC11", "PC12", "PC13", "PC14", "PC15", "PC16";
 				allwinner,function = "card2_boot_para";
 				allwinner,pname = "sdc_ds", "sdc_clk", "sdc_cmd", "sdc_d0", "sdc_d1", "sdc_d2", "sdc_d3", "sdc_d4", "sdc_d5", "sdc_d6", "sdc_d7", "sdc_emmc_rst";
 				allwinner,muxsel = <0x3>;
@@ -2069,6 +2069,7 @@
 		};
 
 		sdmmc@01C11000 {
+		
 			compatible = "allwinner,sun50i-sdmmc2";
 			device_type = "sdc2";
 			reg = <0x0 0x1c11000 0x0 0x1000>;
@@ -2101,7 +2102,7 @@
 			vmmc = "vcc-emmc";
 			vqmmc = "vcc-lpddr";
 			vdmmc = "none";
-		};
+			};
 
 		sdmmc@01c0f000 {
 			compatible = "allwinner,sun50i-sdmmc0";
