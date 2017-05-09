@@ -1521,7 +1521,7 @@
 			codec@0 {
 				linux,phandle = <0xb4>;
 				phandle = <0xb4>;
-				allwinner,pins = "PL11";
+				allwinner,pins = "PL12";
 				allwinner,function = "codec";
 				allwinner,pname = "gpio-spk";
 				allwinner,muxsel = <0x1>;
@@ -1880,9 +1880,9 @@
 			pinctrl-1 = <0x3e>;
 			pinctrl-2 = <0x3f>;
 			pinctrl-3 = <0x40>;
-			gpio-spk = <0x79 0xb 0xb 0x1 0x1 0x1 0x1>;
+			gpio-spk = <0x79 0xb 0xc 0x1 0x1 0x1 0x1>;
 			headphonevol = <0x3b>;
-			spkervol = <0x1a>;
+			spkervol = <0x3a>;
 			earpiecevol = <0x1e>;
 			maingain = <0x4>;
 			headsetmicgain = <0x4>;
