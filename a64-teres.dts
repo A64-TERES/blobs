@@ -2506,7 +2506,7 @@
 			pmu_vbusen_func = <0x1>;
 			pmu_reset = <0x0>;
 			pmu_IRQ_wakeup = <0x1>;
-			pmu_hot_shutdowm = <0x1>;
+			pmu_hot_shutdown = <0x1>;
 			pmu_inshort = <0x0>;
 			pmu_bat_shutdown_ltf = <0xc80>;
 			pmu_bat_shutdown_htf = <0xed>;
@@ -2582,11 +2582,11 @@
 			pmu_bat_temp_para15 = <0xb3>;
 			pmu_bat_temp_para16 = <0x86>;
 			pmu_powkey_off_time = <0x100>;
-			pmu_powkey_off_func = <0x1>;
+			pmu_powkey_off_func = <0x0>;
 			pmu_powkey_off_en = <0x1>;
 			pmu_powkey_long_time = <0x5dc>;
 			pmu_powkey_on_time = <0x3e8>;
-			power_start = <0x0>;
+			power_start = <0x1>;
 		};
 
 		regu@0 {
