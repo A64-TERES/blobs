@@ -2507,7 +2507,7 @@
 			pmu_chg_ic_temp = <0x0>;
 			pmu_battery_rdc = <0x58>;
 			pmu_battery_cap = <0x1b58>;
-			pmu_runtime_chgcur = <0x5dc>;
+			pmu_runtime_chgcur = <0x708>;
 			pmu_suspend_chgcur = <0x5dc>;
 			pmu_shutdown_chgcur = <0x5dc>;
 			pmu_init_chgvol = <0x1068>;
