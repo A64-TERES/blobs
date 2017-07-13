@@ -2790,7 +2790,7 @@
 			dcdc1_vol = <0xf4f24>;
 			dcdc2_vol = <0xf468c>;
 			dcdc6_vol = <0xf468c>;
-			aldo1_vol = <0xce4>;
+			aldo1_vol = <0xf4f24>;
 			aldo2_vol = <0xf4948>;
 			aldo3_vol = <0xf4df8>;
 			dldo1_vol = <0xce4>;
